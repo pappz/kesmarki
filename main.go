@@ -10,8 +10,9 @@ import (
 )
 
 var (
-	log = logger.NewLogger("KESMARKI")
-	wg  sync.WaitGroup
+	log     = logger.NewLogger("KESMARKI")
+	wg      sync.WaitGroup
+	shutter *Shutter
 )
 
 func init() {
@@ -21,13 +22,28 @@ func init() {
 	go func() {
 		<-osSigs
 		log.Println("interrupt...")
-		wg.Done()
+		tearDown()
 	}()
 }
 
+func tearDown() {
+	mqttClose()
+	shutter.Release()
+
+	wg.Done()
+	log.Println("bye")
+}
+
 func main() {
+	var err error
+
+	shutter, err = NewShutter()
+	if err != nil {
+		log.Fatalf("%s", err)
+	}
+
 	wg.Add(1)
-	err := createMQTTServer()
+	err = createMQTTServer()
 	if err != nil {
 		wg.Done()
 		log.Fatal(err)

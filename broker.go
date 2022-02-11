@@ -5,8 +5,12 @@ import (
 	"github.com/mochi-co/mqtt/server/listeners"
 )
 
+var (
+	server *mqtt.Server
+)
+
 func createMQTTServer() error {
-	server := mqtt.New()
+	server = mqtt.New()
 	address := ":1883"
 	tcp := listeners.NewTCP("t1", address)
 
@@ -23,4 +27,9 @@ func createMQTTServer() error {
 	}()
 	log.Printf("MQTT broker listening on: %s", address)
 	return nil
+}
+
+func mqttClose() {
+	log.Printf("close MQTT broker")
+	_ = server.Close()
 }
