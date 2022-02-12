@@ -6,14 +6,14 @@
       </v-container>
     </v-main>
 
-    <v-bottom-navigation fixed app v-model="value">
+    <v-bottom-navigation fixed app>
       <v-btn value="shutter" to="/shutter">
         <span>Shutter</span>
         <v-icon>mdi-window-shutter</v-icon>
       </v-btn>
     </v-bottom-navigation>
 
-    <v-overlay ligth='false' opacity='1' :value="false">
+    <v-overlay ligth='false' opacity='1' :value="overlay">
       <v-progress-circular indeterminate size="130">
         Loading...
       </v-progress-circular>
@@ -26,12 +26,7 @@
 export default {
   name: 'App',
   data: () => ({
-    value: 'recent'
+    overlay: false
   }),
-  methods: {
-    goBack() {
-      return this.$router.go(-1)
-    }
-  }
 };
 </script>
