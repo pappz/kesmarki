@@ -16,9 +16,9 @@ type Shutter struct {
 
 func NewShutter() (*Shutter, error) {
 	s := &Shutter{
-		pinUp:   rpio.Pin(23),
+		pinUp:   rpio.Pin(27),
 		pinStop: rpio.Pin(22),
-		pinDown: rpio.Pin(24),
+		pinDown: rpio.Pin(17),
 	}
 
 	log.Printf("init gpio pins")
