@@ -9,7 +9,7 @@ import './assets/sass/main.scss'
 
 Vue.config.productionTip = false
 
-Vue.use(VueMqtt, 'ws://192.168.0.87:1882', {clientId: 'WebClient-' + parseInt(Math.random() * 100000)})
+Vue.use(VueMqtt, 'wss://192.168.0.87:1882', {clientId: 'WebClient-' + parseInt(Math.random() * 100000)})
 
 new Vue({
   router,
