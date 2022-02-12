@@ -13,6 +13,11 @@
       </v-btn>
     </v-bottom-navigation>
 
+    <v-overlay ligth='false' opacity='1' :value="false">
+      <v-progress-circular indeterminate size="130">
+        Loading...
+      </v-progress-circular>
+    </v-overlay>
   </v-app>
 </template>
 
@@ -21,15 +26,8 @@
 export default {
   name: 'App',
   data: () => ({
-    drawer: false,
-    group: null,
     value: 'recent'
   }),
-  watch: {
-    group () {
-      this.drawer = false
-    },
-  },
   methods: {
     goBack() {
       return this.$router.go(-1)
