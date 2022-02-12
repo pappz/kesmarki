@@ -1,16 +1,5 @@
 <template>
-  <v-app>
-    <v-app-bar app
-               color="indigo"
-               dark>
-      <v-app-bar-nav-icon
-          v-if="$route.meta.mainPage"
-          @click.stop="drawer = !drawer"
-      />
-
-
-    </v-app-bar>
-
+  <v-app app>
     <v-main>
       <v-container fluid ma-0 pa-0>
         <router-view/>
