@@ -11,9 +11,11 @@ Vue.config.productionTip = false
 
 Vue.use(VueMqtt, 'wss://192.168.0.87:1882', {clientId: 'WebClient-' + parseInt(Math.random() * 100000)})
 
-new Vue({
+var app = new Vue({
   router,
   store,
   vuetify,
-  render: h => h(App)
+  render: h => h(App),
 }).$mount('#app')
+
+export default app

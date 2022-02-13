@@ -25,8 +25,13 @@
 
 export default {
   name: 'App',
+  mounted: function () {
+    this.$nextTick(function () {
+      this.overlay = false
+    })
+  },
   data: () => ({
-    overlay: false
+    overlay: true
   }),
 };
 </script>
