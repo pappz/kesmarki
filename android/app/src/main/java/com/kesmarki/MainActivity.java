@@ -56,8 +56,8 @@ public class MainActivity extends AppCompatActivity {
             }
             @Override
             public boolean onConsoleMessage(ConsoleMessage consoleMessage) {
-                Log.d("MyApplication", consoleMessage.message() + " -- From line " +
-                        consoleMessage.lineNumber() + " of " + consoleMessage.sourceId());
+                Log.d("Kesmarki-webview", consoleMessage.message() + " (" +
+                        consoleMessage.lineNumber() + "): " + consoleMessage.sourceId());
                 return true;
             }
         });
