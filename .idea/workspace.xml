@@ -4,19 +4,9 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2ecee2ec-af43-40d1-9829-e702ef61b877" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/web/src/services/mqttApi.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/broker.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/shutter.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/web/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/web/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/App.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/views/shutter/template.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/views/shutter/template.html" afterDir="false" />
+    <list default="true" id="2ecee2ec-af43-40d1-9829-e702ef61b877" name="Changes" comment="change">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/assets/sass/_base.scss" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/assets/sass/_base.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,6 +27,9 @@
   <component name="GoLibraries">
     <option name="indexEntireGoPath" value="false" />
   </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
   <component name="ProjectId" id="24PhsauFq3JZFFEcq4H8JZbgca5" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -56,13 +49,14 @@
     <property name="go.formatter.settings.were.checked" value="true" />
     <property name="go.import.settings.migrated" value="true" />
     <property name="go.modules.go.list.on.any.changes.was.set" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/web" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/web/package.json" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="ssh.settings" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="npm.serve">
     <configuration name="go build github.com/pappz/kesmarki" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
       <module name="kesmarki" />
       <working_directory value="$PROJECT_DIR$" />
@@ -85,6 +79,19 @@
       <filePath value="$PROJECT_DIR$" />
       <method v="2" />
     </configuration>
+    <configuration name="serve" type="js.build_tools.npm" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/web/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="serve" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="npm.serve" />
+    </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -95,7 +102,43 @@
       <option name="presentableId" value="Default" />
       <updated>1644684759426</updated>
       <workItem from="1644684762815" duration="8000" />
+      <workItem from="1644742117916" duration="7000" />
+      <workItem from="1644742506723" duration="54000" />
+      <workItem from="1644831771048" duration="110000" />
+      <workItem from="1644832708258" duration="465000" />
+      <workItem from="1644833389728" duration="971000" />
+      <workItem from="1644834612204" duration="63000" />
+      <workItem from="1644834916392" duration="267000" />
     </task>
+    <task id="LOCAL-00001" summary="change webscoket address">
+      <created>1644831863088</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1644831863088</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Change mqtt address">
+      <created>1644832807983</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1644832807983</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Auto refresh">
+      <created>1644833492301</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1644833492301</updated>
+    </task>
+    <task id="LOCAL-00004" summary="add log lines">
+      <created>1644834661347</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1644834661348</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -116,7 +159,11 @@
     <MESSAGE value="Initial commit" />
     <MESSAGE value="Add shutter" />
     <MESSAGE value="Finalize GPIO pinout" />
-    <option name="LAST_COMMIT_MESSAGE" value="Finalize GPIO pinout" />
+    <MESSAGE value="change webscoket address" />
+    <MESSAGE value="Change mqtt address" />
+    <MESSAGE value="Auto refresh" />
+    <MESSAGE value="add log lines" />
+    <option name="LAST_COMMIT_MESSAGE" value="add log lines" />
   </component>
   <component name="VgoProject">
     <integration-enabled>true</integration-enabled>
