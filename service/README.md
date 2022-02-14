@@ -12,3 +12,30 @@ Create a new file "/etc/kesmarki/users". Fill it with users in separated lines w
 user1:password
 user2:password
 ```
+
+# Systemd service file
+
+location: /etc/systemd/system/kesmarki.service
+Setup step:
+```
+systemctl daemon-reload
+systemctl enable kesmarki.service
+systemctl start kesmarki.service
+```
+```
+[Unit]
+Description=kesmarki
+
+[Service]
+PIDFile=/run/kesmarki.pid
+User=pi
+Group=pi
+StandardOutput=syslog
+StandardError=syslog
+LimitNOFILE=49152
+ExecStart=/usr/local/bin/kesmarki
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
+```
