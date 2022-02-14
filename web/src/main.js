@@ -9,7 +9,7 @@ import './assets/sass/main.scss'
 
 Vue.config.productionTip = false
 
-Vue.use(VueMqtt, 'wss://kesm.webkeyapp.com:1882', {clientId: 'WebClient-' + parseInt(Math.random() * 100000)})
+Vue.use(VueMqtt, 'wss://kesm.webkeyapp.com', {clientId: 'WebClient-' + parseInt(Math.random() * 100000)})
 
 var app = new Vue({
   router,
