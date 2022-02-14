@@ -61,6 +61,11 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
+
+        setUserAgent();
+        webView.addJavascriptInterface(new WebViewInterface(this), "KesmarkiApp");
+        webView.getSettings().setJavaScriptEnabled(true);
+
         webView.loadUrl("https://kesmarki-46126.web.app");
     }
 
@@ -84,4 +89,12 @@ public class MainActivity extends AppCompatActivity {
         filePathCallback.onReceiveValue(uris);
         filePathCallback = null;
     }
+
+    private void setUserAgent() {
+        WebSettings webSettings = webView.getSettings();
+        String userAgent = String.format("%s [%s %s]", webSettings.getUserAgentString(),
+                "KesmarkiApp", BuildConfig.VERSION_CODE);
+        webSettings.setUserAgentString(userAgent);
+    }
+
 }
