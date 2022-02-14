@@ -18,7 +18,7 @@ function isWebView () {
 
 function getPassword () {
     if(isWebView()) {
-        return window.WebkeyApp.getPassword()
+        return window.KesmarkiApp.getPassword()
     } else {
         return "unknown"
     }

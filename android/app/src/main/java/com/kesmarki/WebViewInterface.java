@@ -6,12 +6,12 @@ import android.webkit.JavascriptInterface;
 public class WebViewInterface {
    Context context;
 
-   WebViewInterface(Context c) {
-      context = c;
+   WebViewInterface(Context context) {
+      this.context = context;
    }
 
    @JavascriptInterface
    public String getPassword() {
-      return "secret password";
+      return BuildConfig.MQTT_PASSWORD;
    }
 }
