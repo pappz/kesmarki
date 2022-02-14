@@ -1,5 +1,3 @@
-# doggo-map
-
 ## Project setup
 ```
 npm install
