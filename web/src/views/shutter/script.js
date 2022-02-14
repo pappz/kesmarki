@@ -1,6 +1,7 @@
 export default {
   name: 'Shutter',
   created () {
+    console.log("shutter view loaded")
   },
   methods: {
     shutterUp() {
