@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2ecee2ec-af43-40d1-9829-e702ef61b877" name="Changes" comment="change">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/assets/sass/_base.scss" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/assets/sass/_base.scss" afterDir="false" />
-    </list>
+    <list default="true" id="2ecee2ec-af43-40d1-9829-e702ef61b877" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -108,7 +105,7 @@
       <workItem from="1644832708258" duration="465000" />
       <workItem from="1644833389728" duration="971000" />
       <workItem from="1644834612204" duration="63000" />
-      <workItem from="1644834916392" duration="267000" />
+      <workItem from="1644834916392" duration="329000" />
     </task>
     <task id="LOCAL-00001" summary="change webscoket address">
       <created>1644831863088</created>
@@ -138,7 +135,14 @@
       <option name="project" value="LOCAL" />
       <updated>1644834661348</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="fix style">
+      <created>1644835230675</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1644835230675</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -163,7 +167,8 @@
     <MESSAGE value="Change mqtt address" />
     <MESSAGE value="Auto refresh" />
     <MESSAGE value="add log lines" />
-    <option name="LAST_COMMIT_MESSAGE" value="add log lines" />
+    <MESSAGE value="fix style" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix style" />
   </component>
   <component name="VgoProject">
     <integration-enabled>true</integration-enabled>
