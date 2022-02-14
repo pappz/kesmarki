@@ -16,11 +16,16 @@ var (
 )
 
 func createMQTTServer() error {
+	mqttAuth, err := newMqttAuth()
+	if err != nil {
+		return err
+	}
+
 	server = mqtt.New()
 	tcp := listeners.NewTCP("t1", tcpAddress)
 
-	err := server.AddListener(tcp, &listeners.Config{
-		Auth: new(MqttAuth),
+	err = server.AddListener(tcp, &listeners.Config{
+		Auth: mqttAuth,
 	})
 	if err != nil {
 		return err
@@ -28,7 +33,7 @@ func createMQTTServer() error {
 
 	ws := listeners.NewWebsocket("ws1", wsAddress)
 	err = server.AddListener(ws, &listeners.Config{
-		Auth: new(MqttAuth),
+		Auth: mqttAuth,
 	})
 	if err != nil {
 		return err
