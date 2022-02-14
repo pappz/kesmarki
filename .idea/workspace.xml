@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2ecee2ec-af43-40d1-9829-e702ef61b877" name="Changes" comment="" />
+    <list default="true" id="2ecee2ec-af43-40d1-9829-e702ef61b877" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/service/auth.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/broker.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/broker.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/main.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -106,6 +111,7 @@
       <workItem from="1644833389728" duration="971000" />
       <workItem from="1644834612204" duration="63000" />
       <workItem from="1644834916392" duration="329000" />
+      <workItem from="1644838170913" duration="707000" />
     </task>
     <task id="LOCAL-00001" summary="change webscoket address">
       <created>1644831863088</created>

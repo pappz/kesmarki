@@ -9,7 +9,26 @@ import './assets/sass/main.scss'
 
 Vue.config.productionTip = false
 
-Vue.use(VueMqtt, 'wss://kesm.webkeyapp.com', {clientId: 'WebClient-' + parseInt(Math.random() * 100000)})
+function isWebView () {
+    let regex = /\[KesmarkiApp \d+\]$/i
+    if (regex.test(window.navigator.userAgent)) {
+        return true
+    }
+}
+
+function getPassword () {
+    if(isWebView()) {
+        return window.WebkeyApp.getPassword()
+    } else {
+        return "unknown"
+    }
+}
+
+Vue.use(VueMqtt, 'wss://kesm.webkeyapp.com', {
+      clientId: 'WebClient-' + parseInt(Math.random() * 100000),
+      username: 'kesmarki',
+      password: getPassword(),
+})
 
 var app = new Vue({
   router,
