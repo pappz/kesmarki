@@ -2,3 +2,7 @@ body {
   min-height: 100%;
 }
 
+.v-item-group.v-bottom-navigation .v-btn.v-size--default {
+  height: inherit;
+}
+
