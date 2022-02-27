@@ -1,23 +1,32 @@
 export default {
   name: 'Shutter',
   mounted() {
+    this.$mqtt.subscribe('kesmarki/led')
+    this.defaultColor = {}
     this.color = {
       rgba: {
-        "a": 0,
-        "r": 0,
+        "r": 50,
         "g": 0,
-        "b": 0
+        "b": 100,
+        "a": 0,
       },
     };
   },
   data() {
     return {
-      color: null,
+      color: null
     }
   },
   watch: {
     color() {
       this.setLedColor()
+    }
+  },
+  mqtt: {
+    'kesmarki/led' (data) {
+      var txt = new TextDecoder().decode(data)
+      this.defaultColor = JSON.parse(txt)
+      console.log('default color: '+this.defaultColor)
     }
   },
   methods: {
@@ -31,7 +40,7 @@ export default {
       this.$mqtt.publish('kesmarki/shutter', 'down')
     },
     setLedColor() {
-      this.$mqtt.publish('kesmarki/led',  JSON.stringify(this.color.rgba))
+      this.$mqtt.publish('kesmarki/led',  JSON.stringify(this.color.rgba), {retain: true})
     }
   }
 }
