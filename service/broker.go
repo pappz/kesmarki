@@ -40,7 +40,7 @@ func createMQTTServer() error {
 	}
 
 	server.Events.OnMessage = func(cl events.Client, pk events.Packet) (pkx events.Packet, err error) {
-		handleMessage(string(pk.Payload))
+		handleMessage(pk.TopicName, string(pk.Payload))
 		return pk, nil
 	}
 
@@ -56,7 +56,11 @@ func createMQTTServer() error {
 	return nil
 }
 
-func handleMessage(msg string) {
+func handleMessage(topic string, msg string) {
+	if topic != "shutter" {
+		return
+	}
+
 	switch msg {
 	case "up":
 		shutter.Up()
