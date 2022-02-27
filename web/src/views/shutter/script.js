@@ -31,7 +31,8 @@ export default {
       this.$mqtt.publish('kesmarki/shutter', 'down')
     },
     setLedColor() {
-      this.$mqtt.publish('kesmarki/led', this.color.rgba)
+      this.$mqtt.publish('kesmarki/led',  JSON.stringify(this.color.rgba))
     }
   }
 }
+
