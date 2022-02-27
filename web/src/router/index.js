@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import Shutter from '@/views/shutter'
 
 Vue.use(VueRouter)
 
@@ -11,7 +12,7 @@ const routes = [
   {
     path: '/shutter',
     name: 'Shutter',
-    component: () => import('@/views/shutter'),
+    component: Shutter,
     meta: {
       title: "Shutter"
     }

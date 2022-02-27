@@ -9,9 +9,7 @@
         <v-img
             height="250"
             src="@/assets/garden.jpg"
-        >
-
-        </v-img>
+        />
         <v-row class="justify-center text-center" >
             <v-col cols="12">
                 <div>
@@ -50,6 +48,26 @@
                         </v-icon>
                     </v-btn>
                 </div>
+            </v-col>
+        </v-row>
+    </v-card>
+
+    <v-card style="margin: 20px;"
+            class="mx-auto"
+            max-width="500"
+            elevation="3"
+    >
+        <v-row>
+            <v-col
+                    class="d-flex justify-center"
+            >
+                <v-color-picker
+                        v-model="color"
+                        dot-size="25"
+                        hide-inputs
+                        hide-mode-switch
+                        swatches-max-height="200"
+                ></v-color-picker>
             </v-col>
         </v-row>
     </v-card>
