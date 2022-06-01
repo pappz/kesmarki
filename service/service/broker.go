@@ -4,6 +4,7 @@ import (
 	mqtt "github.com/mochi-co/mqtt/server"
 	"github.com/mochi-co/mqtt/server/events"
 	"github.com/mochi-co/mqtt/server/listeners"
+	"github.com/mochi-co/mqtt/server/listeners/auth"
 	"github.com/webkeydev/logger"
 )
 
@@ -20,17 +21,12 @@ type BrokerService struct {
 	server *mqtt.Server
 }
 
-func NewBrokerService(handler func(topic string, msg string)) (bs BrokerService, err error) {
-	mqttAuth, err := newMqttAuth()
-	if err != nil {
-		return
-	}
-
+func NewBrokerService(authController auth.Controller, handler func(topic string, msg string)) (bs BrokerService, err error) {
 	bs.server = mqtt.New()
 	tcp := listeners.NewTCP("t1", TcpAddress)
 
 	err = bs.server.AddListener(tcp, &listeners.Config{
-		Auth: mqttAuth,
+		Auth: authController,
 	})
 	if err != nil {
 		return
@@ -38,7 +34,7 @@ func NewBrokerService(handler func(topic string, msg string)) (bs BrokerService,
 
 	ws := listeners.NewWebsocket("ws1", WsAddress)
 	err = bs.server.AddListener(ws, &listeners.Config{
-		Auth: mqttAuth,
+		Auth: authController,
 	})
 	if err != nil {
 		return

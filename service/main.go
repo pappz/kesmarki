@@ -64,7 +64,12 @@ func main() {
 
 	wg.Add(1)
 	log.Printf("start service broker")
-	brokerService, err = service.NewBrokerService(handleMessage)
+
+	auth, err := service.NewFileAuth("/etc/kesmarki/users")
+	if err != nil {
+		log.Fatalf("%s", err.Error())
+	}
+	brokerService, err = service.NewBrokerService(auth, handleMessage)
 	if err != nil {
 		wg.Done()
 		log.Fatal(err)
