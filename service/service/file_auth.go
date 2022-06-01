@@ -11,20 +11,20 @@ var (
 	errInvalidCredential = errors.New("invalid credential")
 )
 
-type MqttAuth struct {
+type FileAuth struct {
 	userStore map[string]string
 }
 
-func newMqttAuth() (*MqttAuth, error) {
-	ma := &MqttAuth{
+func NewFileAuth(dbFile string) (*FileAuth, error) {
+	ma := &FileAuth{
 		make(map[string]string),
 	}
 
-	err := ma.readUserDb()
+	err := ma.readUserDb(dbFile)
 	return ma, err
 }
 
-func (a *MqttAuth) Authenticate(user, password []byte) bool {
+func (a *FileAuth) Authenticate(user, password []byte) bool {
 	log.Infof("authenticate user: %s, %s", user, string(password))
 	pwd, ok := a.userStore[string(user)]
 	if !ok {
@@ -34,12 +34,12 @@ func (a *MqttAuth) Authenticate(user, password []byte) bool {
 	return pwd == string(password)
 }
 
-func (a *MqttAuth) ACL(user []byte, topic string, write bool) bool {
+func (a *FileAuth) ACL(user []byte, topic string, write bool) bool {
 	return true
 }
 
-func (a *MqttAuth) readUserDb() error {
-	file, err := os.Open("/etc/kesmarki/users")
+func (a *FileAuth) readUserDb(dbFile string) error {
+	file, err := os.Open(dbFile)
 	if err != nil {
 		return err
 	}
