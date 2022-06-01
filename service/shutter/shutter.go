@@ -1,4 +1,4 @@
-package main
+package shutter
 
 import (
 	"sync"
@@ -7,21 +7,20 @@ import (
 	"github.com/stianeikeland/go-rpio/v4"
 )
 
-type Shutter struct {
+type Control struct {
 	pinUp   rpio.Pin
 	pinStop rpio.Pin
 	pinDown rpio.Pin
 	mutex   sync.Mutex
 }
 
-func NewShutter() (*Shutter, error) {
-	s := &Shutter{
+func NewControl() (*Control, error) {
+	s := &Control{
 		pinUp:   rpio.Pin(27),
 		pinStop: rpio.Pin(22),
 		pinDown: rpio.Pin(17),
 	}
 
-	log.Printf("init gpio pins")
 	if err := rpio.Open(); err != nil {
 		return s, err
 	}
@@ -32,26 +31,25 @@ func NewShutter() (*Shutter, error) {
 	return s, nil
 }
 
-func (s *Shutter) Release() {
-	log.Printf("release gpio resources")
+func (s *Control) Release() {
 	s.mutex.Lock()
 	_ = rpio.Close()
 	s.mutex.Unlock()
 }
 
-func (s *Shutter) Up() {
+func (s *Control) Up() {
 	s.push(&s.pinUp)
 }
 
-func (s *Shutter) Stop() {
+func (s *Control) Stop() {
 	s.push(&s.pinStop)
 }
 
-func (s *Shutter) Down() {
+func (s *Control) Down() {
 	s.push(&s.pinDown)
 }
 
-func (s *Shutter) push(p *rpio.Pin) {
+func (s *Control) push(p *rpio.Pin) {
 	s.mutex.Lock()
 
 	p.Output()
