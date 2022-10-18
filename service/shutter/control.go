@@ -8,10 +8,10 @@ import (
 )
 
 type Control struct {
+	sync.Mutex
 	pinUp   rpio.Pin
 	pinStop rpio.Pin
 	pinDown rpio.Pin
-	mutex   sync.Mutex
 }
 
 func NewControl() (*Control, error) {
@@ -32,9 +32,9 @@ func NewControl() (*Control, error) {
 }
 
 func (s *Control) Release() {
-	s.mutex.Lock()
+	s.Lock()
 	_ = rpio.Close()
-	s.mutex.Unlock()
+	s.Unlock()
 }
 
 func (s *Control) Up() {
@@ -50,12 +50,12 @@ func (s *Control) Down() {
 }
 
 func (s *Control) push(p *rpio.Pin) {
-	s.mutex.Lock()
+	s.Lock()
 
 	p.Output()
 	p.PullDown()
 	time.AfterFunc(500*time.Millisecond, func() {
 		p.Input()
-		s.mutex.Unlock()
+		s.Unlock()
 	})
 }
