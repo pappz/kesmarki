@@ -25,7 +25,6 @@ func NewFileAuth(dbFile string) (*FileAuth, error) {
 }
 
 func (a *FileAuth) Authenticate(user, password []byte) bool {
-	log.Infof("authenticate user: %s, %s", user, string(password))
 	pwd, ok := a.userStore[string(user)]
 	if !ok {
 		return false
