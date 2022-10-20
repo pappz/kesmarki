@@ -9,18 +9,24 @@ import (
 
 var (
 	errInvalidCredential = errors.New("invalid credential")
+	errUsersDbNotFound   = errors.New("user store file not found")
 )
 
 type FileAuth struct {
 	userStore map[string]string
 }
 
-func NewFileAuth(dbFile string) (*FileAuth, error) {
+func NewFileAuth(dbFiles ...string) (*FileAuth, error) {
 	ma := &FileAuth{
 		make(map[string]string),
 	}
 
-	err := ma.readUserDb(dbFile)
+	f, ok := ma.chooseDbFile(dbFiles)
+	if !ok {
+		return ma, errUsersDbNotFound
+	}
+
+	err := ma.readUserDb(f)
 	return ma, err
 }
 
@@ -58,4 +64,14 @@ func (a *FileAuth) readUserDb(dbFile string) error {
 	}
 
 	return nil
+}
+
+func (a *FileAuth) chooseDbFile(dbFiles []string) (string, bool) {
+	for _, s := range dbFiles {
+		if _, err := os.Stat(s); err == nil {
+			return s, true
+		}
+	}
+
+	return "", false
 }

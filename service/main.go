@@ -29,11 +29,7 @@ func init() {
 	}()
 }
 
-func handleMessage(topic string, msg string) {
-	if topic != "kesmarki/shutter" {
-		return
-	}
-
+func handleMessage(msg string) {
 	switch msg {
 	case "up":
 		log.Printf("shutter up")
@@ -48,6 +44,7 @@ func handleMessage(topic string, msg string) {
 }
 
 func tearDown() {
+	log.Printf("close broker")
 	brokerService.Close()
 	log.Printf("release gpio resources")
 	shutterControl.Release()
@@ -60,7 +57,6 @@ func main() {
 	var err error
 
 	log.Printf("init gpio pins")
-
 	shutterControl, err = shutter.NewControl()
 	if err != nil {
 		log.Fatalf("%s", err)
@@ -69,15 +65,17 @@ func main() {
 	wg.Add(1)
 	log.Printf("start service broker")
 
-	auth, err := service.NewFileAuth("/etc/kesmarki/users")
+	auth, err := service.NewFileAuth("users", "/etc/kesmarki/users")
 	if err != nil {
 		log.Fatalf("%s", err.Error())
 	}
-	brokerService, err = service.NewBrokerService(auth, handleMessage)
+	brokerService, err = service.NewBrokerService(auth)
 	if err != nil {
 		wg.Done()
 		log.Fatal(err)
 	}
+
+	brokerService.AddMsgHandler("kesmarki/shutter", handleMessage)
 
 	log.Printf("MQTT broker listening on: %s", service.TcpAddress)
 	log.Printf("Webscoket listener on: %s", service.WsAddress)
