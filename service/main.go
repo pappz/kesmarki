@@ -30,16 +30,19 @@ func init() {
 }
 
 func handleMessage(topic string, msg string) {
-	if topic != "shutter" {
+	if topic != "kesmarki/shutter" {
 		return
 	}
 
 	switch msg {
 	case "up":
+		log.Printf("shutter up")
 		shutterControl.Up()
 	case "stop":
+		log.Printf("shutter stop")
 		shutterControl.Stop()
 	case "down":
+		log.Printf("shutter down")
 		shutterControl.Down()
 	}
 }
@@ -57,6 +60,7 @@ func main() {
 	var err error
 
 	log.Printf("init gpio pins")
+
 	shutterControl, err = shutter.NewControl()
 	if err != nil {
 		log.Fatalf("%s", err)
