@@ -1,37 +1,43 @@
 <template>
   <v-app app>
-    <v-main>
-      <v-container fluid ma-0 pa-0>
-        <router-view/>
-      </v-container>
-    </v-main>
+    <Splash :isLoading="isLoading" />
+    <div v-if="!isLoading">
+      <v-main>
+        <v-container fluid ma-0 pa-0>
+          <router-view/>
+        </v-container>
+      </v-main>
 
-    <v-bottom-navigation fixed app>
-      <v-btn value="shutter" to="/shutter">
-        <span>Shutter</span>
-        <v-icon>mdi-window-shutter</v-icon>
-      </v-btn>
-    </v-bottom-navigation>
-
-    <v-overlay ligth='false' opacity='1' :value="overlay">
-      <v-progress-circular indeterminate size="130">
-        Loading...
-      </v-progress-circular>
-    </v-overlay>
+      <v-bottom-navigation fixed app>
+        <v-btn value="shutter" to="/shutter">
+          <span>Shutter</span>
+          <v-icon>mdi-window-shutter</v-icon>
+        </v-btn>
+      </v-bottom-navigation>
+    </div>
   </v-app>
 </template>
 
 <script>
+import Splash from '@/views/splash'
 
 export default {
   name: 'App',
-  mounted: function () {
-    this.$nextTick(function () {
-      this.overlay = false
-    })
+  components: {
+    Splash,
+  },
+  mounted() {
+    this.$mqtt.on('connect', function (){
+      console.log("connected")
+      this.isLoading = false
+    }.bind(this))
+    this.$mqtt.on('disconnect', function (){
+      console.log("disconnected")
+      this.isLoading = true
+    }.bind(this))
   },
   data: () => ({
-    overlay: true
+    isLoading: true,
   }),
 };
 </script>
