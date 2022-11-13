@@ -1,7 +1,7 @@
 # Compile to Raspberry pi
 
 ```
-GOARCH=arm64 go build
+GOOS=linux GOARCH=arm GOARM=5 go build
 ```
 
 # Setup users
