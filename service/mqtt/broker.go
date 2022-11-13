@@ -1,21 +1,18 @@
-package service
+package mqtt
 
 import (
+	"sync"
+
 	mqtt "github.com/mochi-co/mqtt/server"
 	"github.com/mochi-co/mqtt/server/events"
 	"github.com/mochi-co/mqtt/server/listeners"
 	"github.com/mochi-co/mqtt/server/listeners/auth"
-	"github.com/webkeydev/logger"
-	"sync"
+	log "github.com/sirupsen/logrus"
 )
 
 const (
 	TcpAddress = ":1883"
 	WsAddress  = ":1882"
-)
-
-var (
-	log = logger.NewLogger("BROKER")
 )
 
 type BrokerService struct {
@@ -61,7 +58,6 @@ func NewBrokerService(authController auth.Controller) (BrokerService, error) {
 func (bs *BrokerService) AddMsgHandler(topic string, handler Handler) {
 	log.Printf("add topic listener:  %s", topic)
 	bs.handlers.Store(topic, handler)
-	log.Printf("map: %v", &bs.handlers)
 }
 
 func (bs *BrokerService) Close() {

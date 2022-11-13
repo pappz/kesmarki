@@ -1,3 +1,3 @@
-package service
+package mqtt
 
 type Handler func(msg string)
