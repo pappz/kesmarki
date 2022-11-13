@@ -1,6 +1,6 @@
 module github.com/pappz/kesmarki
 
-go 1.17
+go 1.18
 
 require (
 	github.com/mochi-co/mqtt v1.1.0
