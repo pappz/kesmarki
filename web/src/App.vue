@@ -27,13 +27,18 @@ export default {
     Splash,
   },
   mounted() {
+
+    setTimeout(() => {
+      this.isLoading = false;
+    }, 3000);
+
     this.$mqtt.on('connect', function (){
       console.log("connected")
-      this.isLoading = false
+      //this.isLoading = false
     }.bind(this))
     this.$mqtt.on('disconnect', function (){
       console.log("disconnected")
-      this.isLoading = true
+      //this.isLoading = true
     }.bind(this))
   },
   data: () => ({

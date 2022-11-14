@@ -1,5 +1,5 @@
 .fadeout {
-  animation: fadeout 1s forwards;
+  animation: fadeout 5s forwards;
 }
 
 @keyframes fadeout {
@@ -9,13 +9,21 @@
   }
 }
 
+.loader {
+  overflow: hidden;
+  position: fixed;
+  right: 0;
+  left: 0;
+  top: 0;
+}
+
 .splash-bg {
   background-image: url("../../assets/splash.jpg");
-    -webkit-background-size: cover;
-    -moz-background-size: center cover;
-    height: 100vh;
-    background-size: cover;
-    background-position: center;
-    filter: blur(8px);
-    -webkit-filter: blur(8px);
+  height: 100vh;
+  -webkit-background-size: cover;
+  -moz-background-size: center cover;
+  background-size: cover;
+  background-position: center;
+  filter: blur(8px);
+  -webkit-filter: blur(8px);
 }

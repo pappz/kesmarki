@@ -1,5 +1,5 @@
-<div>
-    <v-img class="splash-bg" :class="{ loader: true, fadeout: !isLoading }"/>
+<div :class="{ loader: true, fadeout: !isLoading }">
+    <v-img class="splash-bg" />
     <v-overlay ligth='true' opacity='0' >
         <v-progress-circular indeterminate size="130">
             Connecting...
