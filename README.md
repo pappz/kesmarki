@@ -2,7 +2,7 @@
 
 DIY hobby project to develop own solution for IoT devices around my apartment.
 
-## Kewords
+## Keywords
 - Android, WebView
 - Go (Go lang)
 - Vue.Js, Vuetify
