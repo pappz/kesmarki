@@ -6,12 +6,12 @@ import (
 	"sync"
 	"syscall"
 
+	log "github.com/sirupsen/logrus"
+	formatter "github.com/webkeydev/logger"
+
 	"github.com/pappz/kesmarki/logic"
 	"github.com/pappz/kesmarki/mqtt"
 	"github.com/pappz/kesmarki/shutter"
-
-	log "github.com/sirupsen/logrus"
-	formatter "github.com/webkeydev/logger"
 )
 
 var (
@@ -21,9 +21,16 @@ var (
 )
 
 func init() {
+	setLogFormatter()
+	registerInterruptSignals()
+}
+
+func setLogFormatter() {
 	formatter.SetTxtFormatterForLogger(log.StandardLogger())
 	log.StandardLogger().SetLevel(log.DebugLevel)
+}
 
+func registerInterruptSignals() {
 	osSigs := make(chan os.Signal, 1)
 	signal.Notify(osSigs, syscall.SIGINT, syscall.SIGTERM)
 	go func() {
