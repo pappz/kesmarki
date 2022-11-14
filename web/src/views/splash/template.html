@@ -1,5 +1,8 @@
-<v-overlay ligth='true' opacity='1' :class="{ loader: true, fadeout: !isLoading }">
-    <v-progress-circular indeterminate size="130">
-        Connecting...
-    </v-progress-circular>
-</v-overlay>
+<div>
+    <v-img class="splash-bg" :class="{ loader: true, fadeout: !isLoading }"/>
+    <v-overlay ligth='true' opacity='0' >
+        <v-progress-circular indeterminate size="130">
+            Connecting...
+        </v-progress-circular>
+    </v-overlay>
+</div>

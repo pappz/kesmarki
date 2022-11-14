@@ -8,3 +8,14 @@
     visibility: hidden;
   }
 }
+
+.splash-bg {
+  background-image: url("../../assets/splash.jpg");
+    -webkit-background-size: cover;
+    -moz-background-size: center cover;
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    filter: blur(8px);
+    -webkit-filter: blur(8px);
+}
