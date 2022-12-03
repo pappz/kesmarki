@@ -1,13 +1,17 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Shutter from '@/views/shutter'
+import Main from '@/pages/main'
 
 Vue.use(VueRouter)
 
 const routes = [
   {
     path: '/',
-    redirect: 'shutter',
+    component: Main,
+    meta: {
+      title: "Main"
+    }
   },
   {
     path: '/shutter',
