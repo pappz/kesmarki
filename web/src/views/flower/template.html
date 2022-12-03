@@ -5,6 +5,12 @@
             elevation="3"
     >
 
+    <v-img
+        :class="{ inactive: !ledMode }"
+        height="250"
+        src="@/assets/flower.png"
+    />
+
     <div class="d-flex justify-center mt-2">
         <v-switch
           v-model="ledMode"
