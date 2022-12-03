@@ -1,23 +1,17 @@
-package logic
+package shutter
 
 import (
 	"encoding/json"
 	"github.com/pappz/kesmarki/mqtt"
-	"github.com/pappz/kesmarki/shutter"
+	"github.com/pappz/kesmarki/tradfi"
 	log "github.com/sirupsen/logrus"
 )
 
-type tradfiSwitchPayload struct {
-	Action      string `json:"action"`
-	Batter      uint16 `json:"batter"`
-	LinkQuality uint16 `json:"linkquality"`
-}
-
 type shutterHandler struct {
-	shutterControl *shutter.Control
+	shutterControl *Control
 }
 
-func RegisterShutterHandler(broker mqtt.BrokerService, shutterControl *shutter.Control) {
+func RegisterShutterHandler(broker mqtt.BrokerService, shutterControl *Control) {
 	s := shutterHandler{shutterControl}
 
 	broker.AddMsgHandler("kesmarki/shutter", s.handleAndroidMessage)
@@ -39,7 +33,7 @@ func (s shutterHandler) handleAndroidMessage(msg string) {
 }
 
 func (s shutterHandler) handleSwitch(msg string) {
-	data := tradfiSwitchPayload{}
+	data := tradfi.SwitchPayload{}
 	err := json.Unmarshal([]byte(msg), &data)
 	if err != nil {
 		log.Errorf("failed to parse switch payload: %s", err.Error())

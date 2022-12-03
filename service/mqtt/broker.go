@@ -60,6 +60,11 @@ func (bs *BrokerService) AddMsgHandler(topic string, handler Handler) {
 	bs.handlers.Store(topic, handler)
 }
 
+func (bs *BrokerService) Send(topic string, msg []byte, retain bool) error {
+	log.Printf("send msg to: %s", topic)
+	return bs.server.Publish(topic, msg, retain)
+}
+
 func (bs *BrokerService) Close() {
 	_ = bs.server.Close()
 }

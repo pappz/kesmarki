@@ -1,6 +1,7 @@
 package main
 
 import (
+	"github.com/pappz/kesmarki/flower"
 	"os"
 	"os/signal"
 	"sync"
@@ -9,7 +10,6 @@ import (
 	log "github.com/sirupsen/logrus"
 	formatter "github.com/webkeydev/logger"
 
-	"github.com/pappz/kesmarki/logic"
 	"github.com/pappz/kesmarki/mqtt"
 	"github.com/pappz/kesmarki/shutter"
 )
@@ -72,7 +72,10 @@ func main() {
 		log.Fatal(err)
 	}
 
-	logic.RegisterShutterHandler(brokerService, shutterControl)
+	flowerControl := flower.NewControl(brokerService)
+
+	shutter.RegisterShutterHandler(brokerService, shutterControl)
+	flower.RegisterFlowerHandler(brokerService, flowerControl)
 
 	log.Printf("MQTT broker listening on: %s", mqtt.TcpAddress)
 	log.Printf("Webscoket listener on: %s", mqtt.WsAddress)
