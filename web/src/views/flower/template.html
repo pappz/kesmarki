@@ -1,26 +1,16 @@
-<v-container
-        fluid
->
+<v-container fluid>
     <v-card style="margin: 20px;"
             class="mx-auto"
             max-width="500"
             elevation="3"
     >
-        <v-row>
-            <v-col
-                    class="d-flex justify-center"
-            >
-                <v-color-picker
-                        v-model="color"
-                        dot-size="25"
-                        hide-inputs
-                        hide-mode-switch
-                        width="380"
-                        canvas-height="350"
-                        swatches-max-height="200"
-                ></v-color-picker>
-            </v-col>
-        </v-row>
+
+    <div class="d-flex justify-center mt-2">
+        <v-switch
+          v-model="ledMode"
+        ></v-switch>
+    </div>
+
     </v-card>
 </v-container>
 
