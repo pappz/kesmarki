@@ -27,6 +27,7 @@ function getPassword () {
 Vue.use(VueMqtt, 'wss://kesm.webkeyapp.com', {
       clientId: 'WebClient-' + parseInt(Math.random() * 100000),
       username: 'webapp',
+      keepalive: 10,
       password: getPassword(),
       queueQoSZero: false
 })
