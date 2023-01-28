@@ -35,6 +35,10 @@ export default {
       console.log("disconnected")
       this.isLoading = true
     }.bind(this))
+    this.$mqtt.on('error', function(error) {
+      console.log('connection failed', error)
+      this.isLoading = false
+    }.bind(this))
   },
   data: () => ({
     isLoading: true,
