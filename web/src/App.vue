@@ -7,13 +7,6 @@
           <router-view/>
         </v-container>
       </v-main>
-
-      <v-bottom-navigation fixed app>
-        <v-btn value="shutter" to="/shutter">
-          <span>Shutter</span>
-          <v-icon>mdi-window-shutter</v-icon>
-        </v-btn>
-      </v-bottom-navigation>
     </div>
   </v-app>
 </template>

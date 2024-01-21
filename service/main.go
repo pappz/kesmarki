@@ -1,7 +1,6 @@
 package main
 
 import (
-	"github.com/pappz/kesmarki/flower"
 	"os"
 	"os/signal"
 	"sync"
@@ -10,8 +9,10 @@ import (
 	log "github.com/sirupsen/logrus"
 	formatter "github.com/webkeydev/logger"
 
+	"github.com/pappz/kesmarki/flower"
 	"github.com/pappz/kesmarki/mqtt"
 	"github.com/pappz/kesmarki/shutter"
+	"github.com/pappz/kesmarki/wol"
 )
 
 var (
@@ -19,6 +20,10 @@ var (
 	shutterControl *shutter.Control
 	brokerService  mqtt.BrokerService
 )
+
+type Config struct {
+	WolBudafokiMac string
+}
 
 func init() {
 	setLogFormatter()
@@ -53,6 +58,7 @@ func tearDown() {
 func main() {
 	var err error
 
+	cfg := readCfg()
 	log.Printf("init gpio pins")
 	shutterControl, err = shutter.NewControl()
 	if err != nil {
@@ -73,12 +79,21 @@ func main() {
 	}
 
 	flowerControl := flower.NewControl(brokerService)
+	flower.RegisterFlowerHandler(brokerService, flowerControl)
 
 	shutter.RegisterShutterHandler(brokerService, shutterControl)
-	flower.RegisterFlowerHandler(brokerService, flowerControl)
+
+	wolSrv := wol.NewBudafokiWol(cfg.WolBudafokiMac)
+	wol.RegisterWolHandler(brokerService, wolSrv)
 
 	log.Printf("MQTT broker listening on: %s", mqtt.TcpAddress)
 	log.Printf("Webscoket listener on: %s", mqtt.WsAddress)
 
 	wg.Wait()
+}
+
+func readCfg() Config {
+	return Config{
+		WolBudafokiMac: os.Getenv("KM_WOL_BUDAFOKI"),
+	}
 }
