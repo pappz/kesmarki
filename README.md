@@ -26,7 +26,7 @@ attached to the GPIO ports of Raspberry.
 
 I implemented a program in GO to control the shutter. Thanks to https://github.com/stianeikeland/go-rpio it was extreamly simple.
 
-The plan was that to control my shutter from any where and later extend the system with light bulb control, thermostat control and etc.
+The plan was that to control my shutter from anywhere and later extend the system with light bulb control, thermostat control and etc.
 So I builded a pure web interface in Vue.js and I upload the code into Firebase hosting.  For the better user experience I created an
 Android application. With it I can load the web UI.
 

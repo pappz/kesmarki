@@ -4,11 +4,15 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2ecee2ec-af43-40d1-9829-e702ef61b877" name="Changes" comment="fix style">
+    <list default="true" id="2ecee2ec-af43-40d1-9829-e702ef61b877" name="Changes" comment="Add wol skeleton">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/android/gradle.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/auth.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/auth.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/broker.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/broker.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/App.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/assets/flower.png" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/assets/flower.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/assets/garden.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/assets/garden.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/assets/wol.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/assets/wol.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/views/flower/template.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/views/flower/template.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/views/shutter/template.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/views/shutter/template.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/views/wol/template.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/views/wol/template.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,8 +26,13 @@
       </list>
     </option>
   </component>
-  <component name="GOROOT" url="file:///usr/lib/go-1.17" />
+  <component name="GOROOT" url="file://$PROJECT_DIR$/../../../../go1.21.3" />
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GoLibraries">
@@ -32,33 +41,49 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 1
+}</component>
   <component name="ProjectId" id="24PhsauFq3JZFFEcq4H8JZbgca5" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="ACTIVE_CLOUD_PROJECT_ACCOUNT" value="zoltan.papp@webkeyapp.com" />
-    <property name="ACTIVE_CLOUD_PROJECT_ID" value="webey-5a01f" />
-    <property name="ACTIVE_CLOUD_PROJECT_NAME" value="Webkey" />
-    <property name="ACTIVE_CLOUD_PROJECT_NUMBER" value="443473028719" />
-    <property name="DefaultGoTemplateProperty" value="Go File" />
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="com.google.cloudcode.ide_session_index" value="20220212_0005" />
-    <property name="go.formatter.settings.were.checked" value="true" />
-    <property name="go.import.settings.migrated" value="true" />
-    <property name="go.modules.go.list.on.any.changes.was.set" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/web/package.json" />
-    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
-    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="ssh.settings" />
-    <property name="vue.rearranger.settings.migration" value="true" />
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultGoTemplateProperty": "Go File",
+    "RunOnceActivity.go.format.on.save.advertiser.fired": "true",
+    "RunOnceActivity.go.formatter.settings.were.checked": "true",
+    "RunOnceActivity.go.migrated.go.modules.settings": "true",
+    "RunOnceActivity.go.modules.go.list.on.any.changes.was.set": "true",
+    "RunOnceActivity.go.watchers.conflict.with.on.save.actions.check.performed": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "wol",
+    "go.import.settings.migrated": "true",
+    "go.sdk.automatically.set": "true",
+    "last_opened_file_path": "/Users/pzoli/go/src/github.com/pappz/kesmarki/web/src/assets",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/web/src/assets" />
+      <recent name="$PROJECT_DIR$/web/src/views" />
+    </key>
   </component>
   <component name="RunManager" selected="npm.serve">
+    <configuration default="true" type="GoApplicationRunConfiguration" factoryName="Go Application">
+      <module name="kesmarki" />
+      <working_directory value="$PROJECT_DIR$" />
+      <go_parameters value="-i" />
+      <kind value="FILE" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <method v="2" />
+    </configuration>
     <configuration name="go build github.com/pappz/kesmarki" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
       <module name="kesmarki" />
       <working_directory value="$PROJECT_DIR$" />
@@ -81,6 +106,16 @@
       <filePath value="$PROJECT_DIR$" />
       <method v="2" />
     </configuration>
+    <configuration default="true" type="GoTestRunConfiguration" factoryName="Go Test">
+      <module name="kesmarki" />
+      <working_directory value="$PROJECT_DIR$" />
+      <go_parameters value="-i" />
+      <kind value="DIRECTORY" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <framework value="gotest" />
+      <method v="2" />
+    </configuration>
     <configuration name="serve" type="js.build_tools.npm" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/web/package.json" />
       <command value="run" />
@@ -92,6 +127,8 @@
       <method v="2" />
     </configuration>
     <list>
+      <item itemvalue="Go Build.kesmarki" />
+      <item itemvalue="Go Build.go build github.com/pappz/kesmarki" />
       <item itemvalue="npm.serve" />
     </list>
   </component>
@@ -182,9 +219,10 @@
     <MESSAGE value="add log lines" />
     <MESSAGE value="fix style" />
     <MESSAGE value="- typo fix&#10;- add configurable password" />
-    <option name="LAST_COMMIT_MESSAGE" value="- typo fix&#10;- add configurable password" />
+    <MESSAGE value="Add wol skeleton" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add wol skeleton" />
   </component>
   <component name="VgoProject">
-    <integration-enabled>true</integration-enabled>
+    <settings-migrated>true</settings-migrated>
   </component>
 </project>
