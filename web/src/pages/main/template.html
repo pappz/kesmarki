@@ -1,8 +1,8 @@
 <div class="main-page">
   <div class="main-content">
-    <Shutter v-if="tab === 'shutter'" />
-    <Flower  v-if="tab === 'flower'" />
-    <Wol     v-if="tab === 'wol'" />
+    <Shutter v-show="tab === 'shutter'" />
+    <Flower  v-show="tab === 'flower'" />
+    <Wol     v-show="tab === 'wol'" />
   </div>
 
   <v-bottom-navigation

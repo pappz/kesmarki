@@ -6,10 +6,16 @@ export default {
   data() {
     return {
       ledMode: true,
+      // True while applying an incoming broker state, so the watcher
+      // doesn't publish it straight back (which caused a feedback loop).
+      applyingRemote: false,
     }
   },
   watch: {
-    ledMode(){
+    ledMode() {
+      if (this.applyingRemote) {
+        return
+      }
       this.setMode()
     }
   },
@@ -17,31 +23,33 @@ export default {
     'kesmarki/light/flower' (data) {
       var txt = new TextDecoder().decode(data)
       var payload = JSON.parse(txt)
+      var mode
       switch (payload.action) {
         case 'demo':
-          this.ledMode = true
+          mode = true
           break
         case 'off':
-          this.ledMode = false
+          mode = false
           break
-      } 
+        default:
+          return
+      }
+      if (mode === this.ledMode) {
+        return
+      }
+      this.applyingRemote = true
+      this.ledMode = mode
+      this.$nextTick(() => {
+        this.applyingRemote = false
+      })
     }
   },
   methods: {
     setMode() {
       var msg = {
-        action: ""
-      } 
-      switch (this.ledMode) {
-        case true:
-          msg.action = "demo"
-          break
-        case false:
-          msg.action = "off"
-          break
-      } 
-
-      this.$mqtt.publish('kesmarki/light/flower',  JSON.stringify(msg), {retain: true})
+        action: this.ledMode ? "demo" : "off"
+      }
+      this.$mqtt.publish('kesmarki/light/flower', JSON.stringify(msg), { retain: true })
     }
   }
 }
