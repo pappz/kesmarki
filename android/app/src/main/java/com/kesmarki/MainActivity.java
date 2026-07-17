@@ -15,15 +15,23 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
+import androidx.core.splashscreen.SplashScreen;
+
 public class MainActivity extends AppCompatActivity {
 
     private WebView webView;
     private final int FILECHOOSER_RESULTCODE = 56;
     private ValueCallback<Uri[]> filePathCallback;
 
+    // Keep the launcher-icon splash on screen until the WebView finishes loading.
+    private boolean webViewLoaded = false;
+
     @SuppressLint("SetJavaScriptEnabled")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        SplashScreen splashScreen = SplashScreen.installSplashScreen(this);
+        splashScreen.setKeepOnScreenCondition(() -> !webViewLoaded);
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -45,6 +53,13 @@ public class MainActivity extends AppCompatActivity {
             public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
                 view.loadUrl(request.getUrl().toString());
                 return false;
+            }
+
+            @Override
+            public void onPageFinished(WebView view, String url) {
+                super.onPageFinished(view, url);
+                // Page is rendered: let the splash screen dismiss.
+                webViewLoaded = true;
             }
         });
 
