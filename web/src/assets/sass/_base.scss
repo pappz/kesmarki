@@ -2,11 +2,18 @@ body {
   min-height: 100%;
 }
 
-// App background takes the logo's dark color everywhere.
+// App background: a diagonal dark gradient around the logo's color
+// (same 45deg two-tone style as the webkey client).
 html,
 body,
 .v-application {
-  background-color: #1E2333 !important;
+  background: linear-gradient(45deg, #2A3145, #161A26) fixed !important;
+}
+
+// Let the gradient show through Vuetify's wrappers.
+.v-application .v-application--wrap,
+.v-main {
+  background: transparent !important;
 }
 
 .v-item-group.v-bottom-navigation .v-btn.v-size--default {

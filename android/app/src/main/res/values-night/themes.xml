@@ -12,6 +12,8 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+        <!-- Diagonal gradient behind the WebView while it loads. -->
+        <item name="android:windowBackground">@drawable/splash_gradient</item>
     </style>
 
     <!-- Splash screen shown from launch until the WebView finishes loading.

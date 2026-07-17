@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Diagonal dark gradient around the logo color, matching the web app
+     background (linear-gradient(45deg, #2A3145, #161A26)). Used as the
+     window background after the system splash. -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <gradient
+        android:angle="45"
+        android:startColor="#2A3145"
+        android:endColor="#161A26"
+        android:type="linear" />
+</shape>

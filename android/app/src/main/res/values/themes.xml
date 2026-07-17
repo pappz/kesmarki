@@ -14,6 +14,8 @@
         <!-- Customize your theme here. -->
         <item name="android:windowTranslucentStatus">true</item>
         <item name="android:windowTranslucentNavigation">true</item>
+        <!-- Diagonal gradient behind the WebView while it loads. -->
+        <item name="android:windowBackground">@drawable/splash_gradient</item>
     </style>
 
     <!-- Splash screen shown from launch until the WebView finishes loading.
