@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Adaptive-icon foreground: the Signal House logo, centered in the 108dp
+     canvas within the 72dp safe zone. Vector so it stays crisp and centered
+     at every density (replaces the mis-centered foreground PNGs). -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <!-- Logo art is authored on a 120-unit canvas. Map it onto the 108dp
+         viewport centered. The house spans y=22..102 (visual center y≈62),
+         so anchor on (60,62) to center it vertically. 0.64 keeps the
+         ~77-unit artwork inside the 72dp safe zone. -->
+    <group
+        android:translateX="54"
+        android:translateY="54"
+        android:scaleX="0.64"
+        android:scaleY="0.64">
+        <group
+            android:translateX="-60"
+            android:translateY="-62">
+            <!-- roof -->
+            <path
+                android:fillColor="#FFFFFF"
+                android:pathData="M60 22 L104 58 L16 58 Z" />
+            <!-- house body -->
+            <path
+                android:fillColor="#FFFFFF"
+                android:pathData="M22 58 L98 58 L98 92 Q98 102 88 102 L32 102 Q22 102 22 92 Z" />
+            <!-- inner signal arc -->
+            <path
+                android:strokeColor="#FF9E2C"
+                android:strokeWidth="6"
+                android:strokeLineCap="round"
+                android:pathData="M45 86 A15 15 0 0 1 75 86" />
+            <!-- outer signal arc (faint) -->
+            <path
+                android:strokeColor="#FF9E2C"
+                android:strokeAlpha="0.55"
+                android:strokeWidth="6"
+                android:strokeLineCap="round"
+                android:pathData="M34 86 A26 26 0 0 1 86 86" />
+            <!-- signal dot -->
+            <path
+                android:fillColor="#FF9E2C"
+                android:pathData="M60 87 m -6.5 0 a 6.5 6.5 0 1 0 13 0 a 6.5 6.5 0 1 0 -13 0" />
+        </group>
+    </group>
+</vector>
