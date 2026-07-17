@@ -6,31 +6,30 @@ export default {
       online: null,
       // true while a wake command is in flight (button shows a spinner)
       waking: false,
+      // true until the minimum wake pulse time has elapsed after a tap
+      minWaking: false,
       wakeTimer: null,
       wakePoll: null,
-      // Keep the pulse running for at least ~2 animation cycles so a fast
-      // status reply doesn't make it flash for a single frame.
-      minPulseDone: false,
-      pulseTimer: null,
+      minWakeTimer: null,
     }
   },
   computed: {
-    // Transitional state: waking up, or no status yet. Button pulses and is
-    // not clickable until we know the machine's state.
+    // Pulse while: no status yet (initial load), or a wake was just triggered.
+    // A tap keeps pulsing for at least minWaking so a fast status reply doesn't
+    // make it flash. Not clickable while pulsing.
     pending() {
-      return this.waking || this.online === null || !this.minPulseDone
+      return this.waking || this.minWaking || this.online === null
     }
   },
   mounted() {
-    this.startMinPulse()
     this.$mqtt.subscribe('kesmarki/wol/budafoki/status')
     // Ask the server for a fresh probe now that we are connected/mounted.
     this.requestStatus()
   },
   beforeDestroy() {
     this.stopWaking()
-    if (this.pulseTimer) {
-      clearTimeout(this.pulseTimer)
+    if (this.minWakeTimer) {
+      clearTimeout(this.minWakeTimer)
     }
   },
   mqtt: {
@@ -55,17 +54,6 @@ export default {
       // ignores the payload content.
       this.$mqtt.publish('kesmarki/wol/budafoki/status/get', 'get')
     },
-    startMinPulse() {
-      // Guarantee ~2 pulse cycles (2 x 1.2s) before the pulse can stop.
-      this.minPulseDone = false
-      if (this.pulseTimer) {
-        clearTimeout(this.pulseTimer)
-      }
-      this.pulseTimer = setTimeout(() => {
-        this.minPulseDone = true
-        this.pulseTimer = null
-      }, 2400)
-    },
     stopWaking() {
       this.waking = false
       if (this.wakeTimer) {
@@ -83,7 +71,13 @@ export default {
         return
       }
       this.waking = true
-      this.startMinPulse()
+      // Keep pulsing for at least ~1.5s even if the status confirms instantly.
+      this.minWaking = true
+      if (this.minWakeTimer) clearTimeout(this.minWakeTimer)
+      this.minWakeTimer = setTimeout(() => {
+        this.minWaking = false
+        this.minWakeTimer = null
+      }, 1500)
       this.$mqtt.publish('kesmarki/wol/budafoki', 'up')
       // The machine needs time to boot, so the server's immediate ping after
       // the wake command will still report offline. Poll the status while the
@@ -94,7 +88,7 @@ export default {
       }, 5000)
       this.wakeTimer = setTimeout(() => {
         this.stopWaking()
-      }, 60000)
+      }, 10000)
     },
   }
 }

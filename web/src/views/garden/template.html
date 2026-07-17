@@ -1,0 +1,71 @@
+<v-container fluid class="view-container">
+    <v-img
+        class="view-image mx-auto"
+        height="220"
+        max-width="500"
+        src="@/assets/garden.jpg"
+    />
+
+    <!-- Valve (centered) + refresh (right) on one row below the image -->
+    <div class="garden-controls mx-auto mt-6">
+        <div class="garden-controls-center d-flex flex-column align-center">
+            <v-btn
+                fab
+                large
+                :class="{ 'garden-pulse': pending }"
+                :color="isOn ? '#FF9E2C' : 'grey'"
+                dark
+                :disabled="pending"
+                @click="toggle()"
+            >
+                <v-icon dark>{{ isOn ? 'mdi-water' : 'mdi-water-off' }}</v-icon>
+            </v-btn>
+            <div class="garden-state mt-2">
+                {{ isOn ? 'Watering ON' : (state === 'OFF' ? 'Watering OFF' : '…') }}
+            </div>
+        </div>
+
+        <!-- Refresh: ask the device for a fresh reading on demand -->
+        <v-btn
+            class="garden-refresh"
+            icon
+            large
+            :loading="refreshing"
+            @click="refresh()"
+        >
+            <v-icon>mdi-refresh</v-icon>
+        </v-btn>
+    </div>
+
+    <!-- Status readouts -->
+    <v-row class="mx-auto mt-4" style="max-width: 500px;" dense>
+        <v-col cols="6">
+            <div class="stat">
+                <v-icon small color="#FF9E2C">mdi-battery</v-icon>
+                <span class="stat-value">{{ battery !== null ? battery + ' %' : '—' }}</span>
+                <span class="stat-label">Battery</span>
+            </div>
+        </v-col>
+        <v-col cols="6">
+            <div class="stat">
+                <v-icon small color="#FF9E2C">mdi-water-pump</v-icon>
+                <span class="stat-value">{{ flow !== null ? flow + ' m³/h' : '—' }}</span>
+                <span class="stat-label">Flow</span>
+            </div>
+        </v-col>
+        <v-col cols="6">
+            <div class="stat">
+                <v-icon small color="#FF9E2C">mdi-signal</v-icon>
+                <span class="stat-value">{{ linkquality !== null ? linkquality + ' / 255' : '—' }}</span>
+                <span class="stat-label">Link</span>
+            </div>
+        </v-col>
+        <v-col cols="6">
+            <div class="stat">
+                <v-icon small :color="deviceStatusColor">{{ deviceStatusIcon }}</v-icon>
+                <span class="stat-value">{{ deviceStatusText }}</span>
+                <span class="stat-label">Status</span>
+            </div>
+        </v-col>
+    </v-row>
+</v-container>

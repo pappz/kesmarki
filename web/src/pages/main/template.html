@@ -3,6 +3,7 @@
     <Shutter v-show="tab === 'shutter'" />
     <Flower  v-show="tab === 'flower'" />
     <Wol     v-show="tab === 'wol'" />
+    <Garden  v-show="tab === 'garden'" />
   </div>
 
   <v-bottom-navigation
@@ -27,6 +28,11 @@
     <v-btn value="wol">
       <span>Power</span>
       <v-icon>mdi-desktop-classic</v-icon>
+    </v-btn>
+
+    <v-btn value="garden">
+      <span>Garden</span>
+      <v-icon>mdi-sprinkler-variant</v-icon>
     </v-btn>
   </v-bottom-navigation>
 </div>
