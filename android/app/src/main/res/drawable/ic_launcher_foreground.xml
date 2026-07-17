@@ -9,13 +9,14 @@
     android:viewportHeight="108">
     <!-- Logo art is authored on a 120-unit canvas. Map it onto the 108dp
          viewport centered. The house spans y=22..102 (visual center y≈62),
-         so anchor on (60,62) to center it vertically. 0.64 keeps the
-         ~77-unit artwork inside the 72dp safe zone. -->
+         so anchor on (60,62) to center it vertically. 0.48 keeps the
+         artwork well inside the launcher's visible area (it zooms the
+         foreground), leaving comfortable padding like other icons. -->
     <group
         android:translateX="54"
         android:translateY="54"
-        android:scaleX="0.64"
-        android:scaleY="0.64">
+        android:scaleX="0.48"
+        android:scaleY="0.48">
         <group
             android:translateX="-60"
             android:translateY="-62">
