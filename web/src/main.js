@@ -21,7 +21,7 @@ function getPassword () {
     if(isWebView()) {
         return window.KesmarkiApp.getPassword()
     } else {
-        return "unknown"
+        return process.env.VUE_APP_MQTT_PASSWORD || "unknown"
     }
 }
 
