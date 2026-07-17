@@ -25,8 +25,17 @@ function getPassword () {
     }
 }
 
+function makeClientId () {
+    // Must be unique per running client: two clients sharing a clientId make
+    // the broker kick each other in an endless reconnect loop. Combine time
+    // and randomness so separate tabs/devices never collide.
+    var rnd = Math.random().toString(36).slice(2, 10)
+    var t = Date.now().toString(36)
+    return 'WebClient-' + t + '-' + rnd
+}
+
 Vue.use(VueMqtt, BROKER_URL, {
-      clientId: 'WebClient-' + parseInt(Math.random() * 100000),
+      clientId: makeClientId(),
       username: 'webapp',
       keepalive: 10,
       password: getPassword(),

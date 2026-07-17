@@ -9,8 +9,10 @@
         <v-btn
             fab
             large
-            color="#FF9E2C"
+            :class="{ 'wol-pulse': pending }"
+            :color="online === true ? '#FF9E2C' : 'grey'"
             dark
+            :disabled="pending"
             @click="up()"
         >
             <v-icon dark>mdi-power</v-icon>
