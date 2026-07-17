@@ -1,4 +1,4 @@
-<v-overlay ligth='true' opacity='1' :class="{ loader: true, fadeout: !isLoading }">
+<v-overlay v-if="isLoading" color="white" opacity="1" class="loader">
     <div class="splash-content">
         <v-progress-circular
             :indeterminate="!hasError"
@@ -6,7 +6,7 @@
             size="130"
             width="6"
         >
-            <span v-if="!hasError">Connecting...</span>
+            <span v-if="!hasError" class="splash-spinner-text">Connecting...</span>
             <v-icon v-else color="error" size="48">mdi-lan-disconnect</v-icon>
         </v-progress-circular>
 
