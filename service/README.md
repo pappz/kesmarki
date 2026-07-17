@@ -30,8 +30,8 @@ Description=kesmarki
 PIDFile=/run/kesmarki.pid
 User=pi
 Group=pi
-StandardOutput=syslog
-StandardError=syslog
+StandardOutput=journal
+StandardError=journal
 LimitNOFILE=49152
 ExecStart=/usr/local/bin/kesmarki
 Restart=on-failure
@@ -41,10 +41,21 @@ EnvironmentFile=-/etc/kesmarki/config.env
 WantedBy=multi-user.target
 ```
 
+# View logs
+
+The service logs to the systemd journal. Follow live output with:
+```
+sudo journalctl -u kesmarki -f
+```
+Note the `-u` (unit) flag — `journalctl kesmarki` fails with "Invalid argument".
+
 # Setup environment variables
 location: /etc/kesmarki/config.env
 ```
 KM_WOL_BUDAFOKI=aa:bb:00:00:00:00
+# IP address pinged to report whether the budafoki PC is online.
+# Defaults to 192.168.0.10 when unset.
+KM_WOL_BUDAFOKI_IP=192.168.0.10
 
 # Dynamic DNS (optional). When both KM_DDNS_* below are set, the service keeps
 # the given Route 53 A record pointed at the machine's current public IP.

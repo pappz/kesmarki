@@ -27,6 +27,7 @@ var (
 
 type Config struct {
 	WolBudafokiMac string
+	WolBudafokiIP  string
 
 	DdnsHostedZoneID string
 	DdnsRecordName   string
@@ -95,8 +96,9 @@ func main() {
 
 	shutter.RegisterShutterHandler(brokerService, shutterControl)
 
-	wolSrv := wol.NewBudafokiWol(cfg.WolBudafokiMac)
-	wol.RegisterWolHandler(brokerService, wolSrv)
+	wolSrv := wol.NewBudafokiWol(cfg.WolBudafokiMac, cfg.WolBudafokiIP)
+	wolHandler := wol.RegisterWolHandler(brokerService, wolSrv)
+	wolHandler.PublishInitialStatus()
 
 	startDdns(cfg)
 
@@ -131,11 +133,20 @@ func startDdns(cfg Config) {
 func readCfg() Config {
 	return Config{
 		WolBudafokiMac: os.Getenv("KM_WOL_BUDAFOKI"),
+		WolBudafokiIP:  wolBudafokiIP(),
 
 		DdnsHostedZoneID: os.Getenv("KM_DDNS_HOSTED_ZONE_ID"),
 		DdnsRecordName:   os.Getenv("KM_DDNS_RECORD_NAME"),
 		DdnsInterval:     ddnsInterval(),
 	}
+}
+
+func wolBudafokiIP() string {
+	const fallback = "192.168.0.10"
+	if ip := os.Getenv("KM_WOL_BUDAFOKI_IP"); ip != "" {
+		return ip
+	}
+	return fallback
 }
 
 func ddnsInterval() time.Duration {

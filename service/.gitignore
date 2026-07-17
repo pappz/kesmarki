@@ -1,4 +1,5 @@
 .idea
 users
-kesmarki
+bin/*
+!bin/.gitkeep
 config.env

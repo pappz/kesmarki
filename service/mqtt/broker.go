@@ -85,7 +85,9 @@ func (bs *BrokerService) onMessage(cl events.Client, pk events.Packet) (pkx even
 		return
 	}
 
-	h(string(pk.Payload))
+	// Off the OnMessage callback: handlers may publish back, and doing so
+	// from inside OnMessage re-enters the server and drops the connection.
+	go h(string(pk.Payload))
 	return
 }
 
