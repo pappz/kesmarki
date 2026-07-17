@@ -7,7 +7,7 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <!-- Splash background, kept white in both light and dark mode to match
-         the web "Connecting" screen. -->
-    <color name="splash_background">#FFFFFFFF</color>
+    <!-- Splash background: the logo's dark background, in both light and dark
+         mode, to match the web "Connecting" screen and the app icon. -->
+    <color name="splash_background">#FF1E2333</color>
 </resources>
