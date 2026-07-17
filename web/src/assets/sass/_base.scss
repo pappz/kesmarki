@@ -2,6 +2,13 @@ body {
   min-height: 100%;
 }
 
+// App background takes the logo's dark color everywhere.
+html,
+body,
+.v-application {
+  background-color: #1E2333 !important;
+}
+
 .v-item-group.v-bottom-navigation .v-btn.v-size--default {
   height: inherit;
 }
