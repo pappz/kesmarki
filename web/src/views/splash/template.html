@@ -1,13 +1,14 @@
-<v-overlay v-if="isLoading" color="white" opacity="1" class="loader">
+<v-overlay v-if="isLoading" color="#1E2333" opacity="1" class="loader">
     <div class="splash-content">
+        <img class="splash-logo" src="@/assets/logo.png" alt="Kesmarki" />
+
         <v-progress-circular
             :indeterminate="!hasError"
-            :color="hasError ? 'error' : 'primary'"
-            size="130"
-            width="6"
+            :color="hasError ? 'error' : '#FF9E2C'"
+            size="56"
+            width="4"
         >
-            <span v-if="!hasError" class="splash-spinner-text">Connecting...</span>
-            <v-icon v-else color="error" size="48">mdi-lan-disconnect</v-icon>
+            <v-icon v-if="hasError" color="error" size="28">mdi-lan-disconnect</v-icon>
         </v-progress-circular>
 
         <div class="splash-status" :class="{ 'splash-status--error': hasError }">
