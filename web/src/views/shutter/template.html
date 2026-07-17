@@ -1,49 +1,40 @@
-<v-container
-        fluid
->
-    <v-card
-        class="mx-auto"
+<v-container fluid class="view-container">
+    <v-img
+        class="view-image mx-auto"
+        height="220"
         max-width="500"
-        elevation="3"
-    >
-        <v-img
-            height="200"
-            src="@/assets/garden.jpg"
-        />
-        <v-row class="justify-center text-center" >
-            <v-col cols="12">
-                <v-btn
-                    class="ma-2"
-                    color="grey"
-                    dark
-                    @click="shutterUp()"
-                >
-                    <v-icon dark>
-                        mdi-arrow-up-bold-outline
-                    </v-icon>
-                </v-btn>
-                <v-btn
-                    class="ma-2"
-                    color="grey"
-                    dark
-                    @click="shutterStop()"
-                >
-                    <v-icon dark>
-                        mdi-stop-circle-outline
-                    </v-icon>
-                </v-btn>
-                <v-btn
-                    class="ma-2"
-                    color="grey"
-                    dark
-                    @click="shutterDown()"
-                >
-                    <v-icon dark>
-                        mdi-arrow-down-bold-outline
-                    </v-icon>
-                </v-btn>
-            </v-col>
-        </v-row>
-    </v-card>
+        src="@/assets/garden.jpg"
+    />
+    <div class="d-flex justify-center mt-6">
+        <v-btn
+            class="ma-2"
+            fab
+            large
+            color="#FF9E2C"
+            dark
+            @click="shutterUp()"
+        >
+            <v-icon dark>mdi-arrow-up-bold-outline</v-icon>
+        </v-btn>
+        <v-btn
+            class="ma-2"
+            fab
+            large
+            color="#FF9E2C"
+            dark
+            @click="shutterStop()"
+        >
+            <v-icon dark>mdi-stop-circle-outline</v-icon>
+        </v-btn>
+        <v-btn
+            class="ma-2"
+            fab
+            large
+            color="#FF9E2C"
+            dark
+            @click="shutterDown()"
+        >
+            <v-icon dark>mdi-arrow-down-bold-outline</v-icon>
+        </v-btn>
+    </div>
 </v-container>
-

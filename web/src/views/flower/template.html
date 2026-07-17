@@ -1,22 +1,16 @@
-<v-container fluid>
-    <v-card style="margin: 20px;"
-            class="mx-auto"
-            max-width="500"
-            elevation="1"
-    >
-
+<v-container fluid class="view-container">
     <v-img
         :class="{ inactive: !ledMode }"
-        height="200"
+        class="view-image mx-auto"
+        height="220"
+        max-width="500"
         src="@/assets/flower.png"
     />
-
-    <div class="d-flex justify-center mt-2">
+    <div class="d-flex justify-center mt-4">
         <v-switch
           v-model="ledMode"
+          inset
+          color="#FF9E2C"
         ></v-switch>
     </div>
-
-    </v-card>
 </v-container>
-

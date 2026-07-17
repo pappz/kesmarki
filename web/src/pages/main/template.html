@@ -1,5 +1,30 @@
-<div>
-  <Shutter />
-  <Flower />
-  <Wol />
+<div class="main-page">
+  <div class="main-content">
+    <Shutter v-if="tab === 'shutter'" />
+    <Flower  v-if="tab === 'flower'" />
+    <Wol     v-if="tab === 'wol'" />
+  </div>
+
+  <v-bottom-navigation
+    v-model="tab"
+    color="#FF9E2C"
+    grow
+    fixed
+    class="main-bottom-nav"
+  >
+    <v-btn value="shutter">
+      <span>Shutter</span>
+      <v-icon>mdi-window-shutter</v-icon>
+    </v-btn>
+
+    <v-btn value="flower">
+      <span>Light</span>
+      <v-icon>mdi-lightbulb</v-icon>
+    </v-btn>
+
+    <v-btn value="wol">
+      <span>Power</span>
+      <v-icon>mdi-desktop-classic</v-icon>
+    </v-btn>
+  </v-bottom-navigation>
 </div>

@@ -7,5 +7,8 @@ export default {
     Shutter,
     Flower,
     Wol
-  }
+  },
+  data: () => ({
+    tab: 'shutter'
+  })
 }

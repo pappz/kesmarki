@@ -1,0 +1,9 @@
+.main-page {
+  min-height: 100vh;
+}
+
+// Leave room for the fixed bottom navigation so content isn't hidden.
+.main-content {
+  padding-bottom: 72px;
+  padding-top: 16px;
+}

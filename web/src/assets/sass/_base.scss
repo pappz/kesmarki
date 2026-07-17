@@ -6,3 +6,13 @@ body {
   height: inherit;
 }
 
+// Shared look for the per-tab views (no card wrapper).
+.view-container {
+  max-width: 540px;
+}
+
+.view-image {
+  border-radius: 12px;
+  overflow: hidden;
+}
+
