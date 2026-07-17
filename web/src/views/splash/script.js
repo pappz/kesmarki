@@ -1,4 +1,8 @@
 export default {
     name: "Splash",
-    props: ["isLoading"]
+    props: {
+        isLoading: Boolean,
+        hasError: Boolean,
+        brokerUrl: String,
+    }
 };

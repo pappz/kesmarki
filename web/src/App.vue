@@ -1,6 +1,6 @@
 <template>
   <v-app app>
-    <Splash :isLoading="isLoading" />
+    <Splash :isLoading="isLoading" :hasError="hasError" :brokerUrl="brokerUrl" />
     <div v-if="!isLoading">
       <v-main>
         <v-container fluid ma-0 pa-0>
@@ -13,6 +13,7 @@
 
 <script>
 import Splash from '@/views/splash'
+import { BROKER_URL } from '@/config'
 
 export default {
   name: 'App',
@@ -20,21 +21,43 @@ export default {
     Splash,
   },
   mounted() {
-    this.$mqtt.on('connect', function (){
-      console.log("connected")
+    this.$mqtt.on('connect', function () {
+      console.log('connected to', this.brokerUrl)
       this.isLoading = false
+      this.hasError = false
     }.bind(this))
-    this.$mqtt.on('disconnect', function (){
-      console.log("disconnected")
+
+    this.$mqtt.on('reconnect', function () {
+      console.log('reconnecting to', this.brokerUrl)
+      this.hasError = false
+    }.bind(this))
+
+    this.$mqtt.on('close', function () {
+      console.log('connection closed')
+    }.bind(this))
+
+    this.$mqtt.on('offline', function () {
+      console.log('offline')
+      this.hasError = true
       this.isLoading = true
     }.bind(this))
-    this.$mqtt.on('error', function(error) {
+
+    this.$mqtt.on('disconnect', function () {
+      console.log('disconnected')
+      this.isLoading = true
+      this.hasError = true
+    }.bind(this))
+
+    this.$mqtt.on('error', function (error) {
       console.log('connection failed', error)
-      this.isLoading = false
+      this.isLoading = true
+      this.hasError = true
     }.bind(this))
   },
   data: () => ({
     isLoading: true,
+    hasError: false,
+    brokerUrl: BROKER_URL,
   }),
 };
 </script>

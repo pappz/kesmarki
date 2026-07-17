@@ -5,6 +5,7 @@ import './registerServiceWorker'
 import router from './router'
 import store from './store'
 import vuetify from './plugins/vuetify'
+import { BROKER_URL } from './config'
 import './assets/sass/main.scss'
 
 Vue.config.productionTip = false
@@ -24,7 +25,7 @@ function getPassword () {
     }
 }
 
-Vue.use(VueMqtt, 'wss://kesm.webkeyapp.com', {
+Vue.use(VueMqtt, BROKER_URL, {
       clientId: 'WebClient-' + parseInt(Math.random() * 100000),
       username: 'webapp',
       keepalive: 10,
