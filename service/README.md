@@ -45,4 +45,42 @@ WantedBy=multi-user.target
 location: /etc/kesmarki/config.env
 ```
 KM_WOL_BUDAFOKI=aa:bb:00:00:00:00
+
+# Dynamic DNS (optional). When both KM_DDNS_* below are set, the service keeps
+# the given Route 53 A record pointed at the machine's current public IP.
+KM_DDNS_HOSTED_ZONE_ID=Z0123456789ABCDEFGHIJ
+KM_DDNS_RECORD_NAME=kesmarki.godevltd.com
+KM_DDNS_INTERVAL=1h
+
+# AWS credentials for the Route 53 update (standard AWS SDK env vars).
+AWS_REGION=us-east-1
+AWS_ACCESS_KEY_ID=AKIA...
+AWS_SECRET_ACCESS_KEY=...
 ```
+
+## Dynamic DNS
+
+If the machine sits behind a dynamic public IP, set the `KM_DDNS_*` variables
+above. On startup and then every `KM_DDNS_INTERVAL` (default `1h`) the service
+looks up its public IP and, when it changed, UPSERTs the A record via the
+Route 53 API. Leave `KM_DDNS_HOSTED_ZONE_ID` / `KM_DDNS_RECORD_NAME` unset to
+disable the feature — the rest of the service is unaffected.
+
+The IAM user/role behind the AWS credentials only needs permission to change
+records in the one hosted zone:
+
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": "route53:ChangeResourceRecordSets",
+      "Resource": "arn:aws:route53:::hostedzone/Z0123456789ABCDEFGHIJ"
+    }
+  ]
+}
+```
+
+Find the hosted zone ID in the Route 53 console (or with
+`aws route53 list-hosted-zones-by-name --dns-name godevltd.com`).
