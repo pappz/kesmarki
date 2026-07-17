@@ -17,8 +17,8 @@
     <!-- Splash screen shown from launch until the WebView finishes loading.
          Uses the launcher icon (the doggo) on the icon background color. -->
     <style name="Theme.DoggoMap.Splash" parent="Theme.SplashScreen">
-        <item name="windowSplashScreenBackground">@color/ic_launcher_background</item>
-        <item name="windowSplashScreenAnimatedIcon">@mipmap/ic_launcher_foreground</item>
+        <item name="windowSplashScreenBackground">@color/splash_background</item>
+        <item name="windowSplashScreenAnimatedIcon">@mipmap/ic_launcher</item>
         <item name="postSplashScreenTheme">@style/Theme.DoggoMap</item>
     </style>
 </resources>
